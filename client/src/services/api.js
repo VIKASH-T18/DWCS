@@ -1,7 +1,11 @@
 import axios from 'axios';
 
+// Use Vite env variable provided by Vercel.
+// If VITE_API_URL is not set in production, fallback to the Render backend.
+const baseURL = import.meta.env.VITE_API_URL?.trim() || 'https://dwcs.onrender.com/api';
+
 const api = axios.create({
-    baseURL: 'http://localhost:5000/api',
+    baseURL,
 });
 
 // Add a request interceptor to include the JWT token
